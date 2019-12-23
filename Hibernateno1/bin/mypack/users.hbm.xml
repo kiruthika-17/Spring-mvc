@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping>
+
+<class name="mypack.user" table="userinfo1">
+<id name="userid" column="userid"></id>
+<property name="username" column="username"></property>
+<property name="password" column="password"></property>
+</class>
+
+</hibernate-mapping>
