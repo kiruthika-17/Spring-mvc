@@ -26,27 +26,22 @@ import java.util.List;
 import java.util.Scanner;
 
 @Service
-public class SubredditService {
+public class SubredditService implements SubredditServiceInterface{
 
     @Autowired
     SubredditRepo repo;
+
     public ResponseEntity<String> saveSubreddit(String subreddit_name) throws JSONException, IOException {
-
-  //  String uri = "https://www.reddit.com/r/worldnews.json";
-
-        String uri = "https://www.reddit.com/r/"+subreddit_name+".json";
-
-     //System.out.println(uri);
-     RestTemplate restTemplate = new RestTemplate();
-     HttpHeaders headers = new HttpHeaders();
-     headers.set("user-agent","aaa");
-    //   headers.set("authorization","bearer 430456666949-lRCyhs7DgRMvYyzcvDPYtbmrs6I") ;
-     HttpEntity<String> entity=new HttpEntity<String>("parameters",headers);
-       // System.out.println(uri);
-     ResponseEntity<String> response
+        String uri = "https://oauth.reddit.com/r/"+subreddit_name+".json";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("user-agent","aaa");
+       headers.set("authorization","bearer 430456666949-IHORXVsuxIMc120RZJUl7ZwDykw") ;
+        HttpEntity<String> entity=new HttpEntity<String>("parameters",headers);
+        ResponseEntity<String> response
                 = restTemplate.exchange(uri,HttpMethod.GET,entity,String.class);
-     JSONObject result = new JSONObject(response.getBody());
-    if(result!=null) {
+         JSONObject result = new JSONObject(response.getBody());
+        if(result!=null) {
         JSONObject data = (JSONObject) result.get("data");
         if(data!=null) {
             JSONArray children = data.getJSONArray("children");
@@ -58,14 +53,8 @@ public class SubredditService {
             for (int i = 0; i < length; i++) {
                 JSONObject post = children.getJSONObject(i);
                 JSONObject ans = (JSONObject) post.get("data");
-                Object aObj = ans.get("created_utc");
-                if(aObj instanceof Integer){
-                    System.out.println(aObj);
-                }
-
                 output = ans.toString();
                 subredditList.add(objectMapper.readValue(output, SubredditDTO.class));
-
             }
 
 
