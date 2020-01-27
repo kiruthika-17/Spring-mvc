@@ -7,6 +7,6 @@ import java.io.IOException;
 
 public interface SubredditServiceInterface {
 
-    public ResponseEntity<String> saveSubreddit(String subreddit_name) throws JSONException, IOException;
+    ResponseEntity<String> saveSubreddit(String subreddit_name) throws JSONException, IOException;
 
 }

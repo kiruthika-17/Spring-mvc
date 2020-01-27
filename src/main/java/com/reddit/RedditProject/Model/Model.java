@@ -1,13 +1,9 @@
 package com.reddit.RedditProject.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+
 
 
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -20,10 +16,12 @@ public class Model {
    private String subreddit_id;
    private String subreddit;
    private int score;
+
    @Column(name="createdutc")
    private String created_utc;
    private int ups;
    private String author_fullname;
+
    @Column(name="post_id")
    private String name;
 
