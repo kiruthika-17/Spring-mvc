@@ -107,7 +107,6 @@ public class SubredditService implements SubredditServiceInterface{
         if(!model.isPresent()) {
 
             try {
-
                 repo.save(m);
                // logger= (Logger) LogManager.getLogger(SubredditService.class);
                 //logger.info("Successfully saved subreddit to db");
