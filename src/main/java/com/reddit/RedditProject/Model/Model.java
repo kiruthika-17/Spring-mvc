@@ -5,24 +5,27 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 
-
 @JsonIgnoreProperties(ignoreUnknown=true)
 @Entity
-@Table(name="subreddit1")
+@Table(name="Subreddit_Table")
 public class Model {
+
    @Id
    @GeneratedValue(strategy= GenerationType.IDENTITY)
    private int id;
+   @Column(name="SubredditId")
    private String subreddit_id;
+   @Column(name="SubredditName")
    private String subreddit;
+   @Column(name="Score")
    private int score;
-
-   @Column(name="createdutc")
+   @Column(name="CreatedUtc")
    private String created_utc;
+   @Column(name="Ups")
    private int ups;
+   @Column(name="Author")
    private String author_fullname;
-
-   @Column(name="post_id")
+   @Column(name="PostId")
    private String name;
 
 

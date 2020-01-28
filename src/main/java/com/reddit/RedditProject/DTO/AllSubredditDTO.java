@@ -9,15 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class SubredditDTO {
+public class AllSubredditDTO {
 
-    private String subreddit_id;
-    private String subreddit;
-    private int score;
-    private String created_utc;
-    private int ups;
-    private String author_fullname;
-    private String name;
-
-
+    private String display_name;
 }
